@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 280" width="100%" height="100%">
+  <rect width="920" height="280" rx="16" fill="#FFFFFF"/>
+  <g transform="translate(40, 20) scale(0.75)">
+    
+    <g class="inlay-symbol-monochrome" fill="#0A0A0A">
+      <!-- Upper Section -->
+      <path d="M134 46 L162 26 L238 82 L238 186 L206 208 L206 132 L162 164 L162 66 L134 46 Z" opacity="1.0" />
+      <!-- Lower Interlocking Ribbon -->
+      <path d="M152 144 L234 104 L206 132 L152 172 L118 196 L98 214 L98 238 L118 258 L152 232 L206 208 L238 186 L206 204 L152 226 L118 242 L112 230 L118 210 Z" opacity="0.82" />
+      <!-- Anchor -->
+      <path d="M152 232 L206 286 L238 240 L238 224 L206 270 Z" opacity="0.9" />
+    </g>
+    
+  </g>
+  <g transform="translate(260, 158)">
+    <text font-family="'Plus Jakarta Sans', 'Outfit', 'Inter', sans-serif" 
+          font-size="62" 
+          font-weight="800" 
+          letter-spacing="7px" 
+          fill="#0A0A0A">
+      INLAYTECHS
+    </text>
+    <text y="34" 
+          font-family="'Plus Jakarta Sans', 'Inter', sans-serif" 
+          font-size="14" 
+          font-weight="600" 
+          letter-spacing="6px" 
+          fill="#404040">
+      NEXT-GEN ENTERPRISE SYSTEMS
+    </text>
+  </g>
+</svg>
