@@ -22,12 +22,28 @@ export interface InlaytechsLogoProps {
   priority?: boolean;
 }
 
-const sizeMap = {
-  sm: { width: 140, height: 42, iconSize: 32 },
-  md: { width: 180, height: 54, iconSize: 42 },
-  lg: { width: 240, height: 72, iconSize: 56 },
-  xl: { width: 320, height: 96, iconSize: 72 },
-  hero: { width: 440, height: 132, iconSize: 110 },
+const sizeMapHorizontal = {
+  sm: { width: 165, height: 32 },
+  md: { width: 210, height: 40 },
+  lg: { width: 270, height: 52 },
+  xl: { width: 340, height: 65 },
+  hero: { width: 460, height: 88 },
+};
+
+const sizeMapStacked = {
+  sm: { width: 100, height: 55 },
+  md: { width: 145, height: 80 },
+  lg: { width: 190, height: 105 },
+  xl: { width: 260, height: 144 },
+  hero: { width: 360, height: 200 },
+};
+
+const sizeMapIcon = {
+  sm: { width: 36, height: 32 },
+  md: { width: 47, height: 42 },
+  lg: { width: 63, height: 56 },
+  xl: { width: 81, height: 72 },
+  hero: { width: 123, height: 110 },
 };
 
 export const InlaytechsLogo: React.FC<InlaytechsLogoProps> = ({
@@ -40,39 +56,49 @@ export const InlaytechsLogo: React.FC<InlaytechsLogoProps> = ({
   priority = false,
 }) => {
   const isIconOnly = variant.startsWith("icon-");
-  const dimensions = sizeMap[size];
+  const isStacked = variant.startsWith("stacked-");
 
-  const logoSrc = `/assets/logos/inlaytechs-${variant}.svg`;
+  let logoSrc = "/assets/logos/inlaytechs-horizontal-clean.webp";
+  let dimensions = sizeMapHorizontal[size];
+
+  if (isIconOnly) {
+    logoSrc = "/assets/logos/inlaytechs-symbol-clean.webp";
+    dimensions = sizeMapIcon[size];
+  } else if (isStacked) {
+    logoSrc = "/assets/logos/inlaytechs-stacked-clean.webp";
+    dimensions = sizeMapStacked[size];
+  }
 
   return (
     <div
       className={`relative inline-flex items-center justify-center transition-all duration-500 group overflow-hidden ${className}`}
     >
-      {/* Ambient Gradient Glow (Teal & Bronze) */}
+      {/* Ambient Gradient Glow (Official Neon Magenta & Silver) */}
       {withGlow && (
         <div
-          className="absolute -inset-3 bg-gradient-to-r from-teal-500/25 via-transparent to-[#CD7F32]/20 rounded-full blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+          className="absolute -inset-3 bg-gradient-to-r from-pink-500/25 via-rose-500/15 to-white/10 rounded-full blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
           aria-hidden="true"
         />
       )}
 
-      {/* Official Vector Logo */}
+      {/* Official 3D Metallic Company Logo Asset */}
       <div className="relative z-10 flex items-center">
         <Image
           src={logoSrc}
           alt="INLAYTECHS Official Logo"
-          width={isIconOnly ? dimensions.iconSize : dimensions.width}
-          height={isIconOnly ? dimensions.iconSize : dimensions.height}
+          width={dimensions.width}
+          height={dimensions.height}
           priority={priority}
           className={`object-contain transition-all duration-500 ${
             animate ? "group-hover:scale-[1.03] group-hover:brightness-110" : ""
           }`}
+          style={{ width: "auto", height: `${dimensions.height}px` }}
         />
 
-        {/* Subtle Specular Metallic Light Sweep (Presentation Only) */}
+        {/* Specular Metallic Light Sweep */}
         {withShine && (
           <div
-            className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-1000 ease-in-out pointer-events-none opacity-0 group-hover:opacity-100 bg-gradient-to-r from-transparent via-white/15 to-transparent skew-x-12"
+            className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-1000 ease-in-out pointer-events-none opacity-0 group-hover:opacity-100 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
             aria-hidden="true"
           />
         )}
@@ -80,4 +106,3 @@ export const InlaytechsLogo: React.FC<InlaytechsLogoProps> = ({
     </div>
   );
 };
-

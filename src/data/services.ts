@@ -20,9 +20,9 @@ export const SERVICES: ServiceItem[] = [
   {
     id: "business-portfolio-website",
     number: "01",
-    name: "Business & Portfolio Website",
+    name: "High-Performance Business Websites",
     slug: "business-portfolio-website",
-    tagline: "High-Caliber Corporate & Professional Showcases",
+    tagline: "Custom-Engineered Web Platforms & Digital Authority",
     shortDescription: "Custom-engineered websites designed to establish authority, present credentials, and convert visitors into clients.",
     overview: "We architect premium digital flagships for businesses, founders, agencies, and high-growth practices. Every site is built with bespoke typography, responsive layouts, fast load speeds, and intuitive navigation.",
     deliverables: [
@@ -63,9 +63,52 @@ export const SERVICES: ServiceItem[] = [
     visualHighlight: "Corporate & Portfolio Excellence"
   },
   {
-    id: "meta-ads-reels",
+    id: "ecommerce-storefronts",
     number: "02",
-    name: "Meta Ads & Reels",
+    name: "Scalable E-commerce Storefronts",
+    slug: "ecommerce",
+    tagline: "Modern Digital Storefronts & Frictionless Purchasing",
+    shortDescription: "Scalable e-commerce platforms engineered for smooth product discovery, secure checkout, and effortless catalog management.",
+    overview: "We build modern e-commerce storefronts that combine luxury aesthetics with lightning-fast catalog search, optimized product pages, and reliable payment processing.",
+    deliverables: [
+      "Complete E-commerce Architecture & Catalog Setup",
+      "Responsive Product Catalog, Search & Filtering System",
+      "High-Converting Product Detail Pages (PDP)",
+      "Shopping Cart & Streamlined Checkout Flow",
+      "Payment Gateway Integration (Razorpay, Stripe, UPI)",
+      "Order Management & Customer Notification Routing"
+    ],
+    features: [
+      { title: "Mobile-First Purchasing", desc: "Designed for effortless single-hand browsing and rapid checkout on phones." },
+      { title: "Secure Transactions", desc: "Encrypted payment gateways supporting cards, net banking, and UPI." },
+      { title: "Inventory Control", desc: "Straightforward admin dashboard for adding products and tracking orders." }
+    ],
+    process: [
+      { step: "01", title: "Catalog & SKU Planning", desc: "Organize product categories, variations, and pricing structures." },
+      { step: "02", title: "Storefront UX Design", desc: "Design seamless browsing, filtering, and product showcase flows." },
+      { step: "03", title: "Integration & Cart Logic", desc: "Connect payment gateways, shipping rules, and automated receipts." },
+      { step: "04", title: "Testing & Launch", desc: "Run end-to-end sandbox test orders and verify live payments." }
+    ],
+    suitableFor: [
+      "Direct-to-Consumer (D2C) brands",
+      "Retail shops expanding into online commerce",
+      "Wholesale and B2B distributors seeking online order processing",
+      "Digital product creators and specialty merchandise"
+    ],
+    benefits: [
+      "Open for business 24/7 with zero geographical boundaries",
+      "High checkout completion rates with reduced cart abandonment",
+      "Full ownership of your customer relationship and store data",
+      "Automated order intake and fulfillment dispatch"
+    ],
+    accentColor: "teal",
+    iconName: "ShoppingCart",
+    visualHighlight: "Digital Storefronts & Checkout"
+  },
+  {
+    id: "meta-ads-reels",
+    number: "03",
+    name: "Targeted Meta Ads & High-Retention Reels",
     slug: "meta-ads-reels",
     tagline: "High-Retention Visual Hooks & Targeted Acquisition",
     shortDescription: "End-to-end creative production and ad optimization for Instagram Reels, Facebook campaigns, and Meta advertising.",
@@ -108,51 +151,9 @@ export const SERVICES: ServiceItem[] = [
     visualHighlight: "Meta Ads & Reels Engine"
   },
   {
-    id: "poster-design",
-    number: "03",
-    name: "Poster Design",
-    slug: "poster-design",
-    tagline: "Impactful Visual Communication & Print/Digital Creatives",
-    shortDescription: "High-impact visual creatives and promotional posters engineered for digital announcements, social campaigns, and print.",
-    overview: "Transform complex messages into striking, visually arresting promotional posters. We combine bold typography, calculated color theory, and structured hierarchy to command instant attention.",
-    deliverables: [
-      "Digital Marketing & Social Media Promotional Posters",
-      "Event, Product Launch & Campaign Announcements",
-      "High-Resolution Print-Ready Artwork (Vector/CMYK)",
-      "Multi-format Exports (1:1, 4:5, 9:16, 16:9, A3/A4)",
-      "Consistent Corporate Brand Graphic Language"
-    ],
-    features: [
-      { title: "Architectural Layouts", desc: "Balanced visual hierarchy that guides the eye to the key takeaway." },
-      { title: "High-DPI Fidelity", desc: "Sharp typography and vector assets ready for digital screens and large format print." },
-      { title: "Tailored Palette", desc: "Curated color schemes that amplify brand identity without clutter." }
-    ],
-    process: [
-      { step: "01", title: "Content Analysis", desc: "Extract primary headline, secondary details, and call to action." },
-      { step: "02", title: "Concept Sketching", desc: "Explore composition, focal points, and typography scale." },
-      { step: "03", title: "Design Execution", desc: "Apply precise typography, lighting, gradients, and graphic styling." },
-      { step: "04", title: "Format Adaptation", desc: "Export in requested ratios for social, print, and web displays." }
-    ],
-    suitableFor: [
-      "Service announcements and special offers",
-      "Corporate conferences, seminars, and events",
-      "Product launches and retail promotions",
-      "Social media feed visual campaigns"
-    ],
-    benefits: [
-      "Distinct visual presence that separates your business from competitors",
-      "Clear, memorable communication of time-sensitive offers",
-      "Professional materials suitable for both digital sharing and print",
-      "Cohesive brand identity across all customer touchpoints"
-    ],
-    accentColor: "teal",
-    iconName: "Image",
-    visualHighlight: "Visual Communication & Posters"
-  },
-  {
     id: "social-media-marketing",
     number: "04",
-    name: "Social Media Marketing",
+    name: "Strategic Social Media Distribution",
     slug: "social-media-marketing",
     tagline: "Strategic Brand Presence & Community Resonance",
     shortDescription: "Comprehensive social media management, content planning, and distribution to build brand affinity and loyal followers.",
@@ -192,50 +193,51 @@ export const SERVICES: ServiceItem[] = [
     visualHighlight: "Social Media Strategy & Distribution"
   },
   {
-    id: "digital-marketing",
+    id: "poster-design",
     number: "05",
-    name: "Digital Marketing",
-    slug: "digital-marketing",
-    tagline: "Performance-Driven Online Growth & Lead Generation",
-    shortDescription: "Integrated marketing strategies designed to increase reach, generate qualified leads, and maximize your digital footprint.",
-    overview: "Growth requires more than sporadic posting. We deploy unified digital marketing strategies linking your search visibility, paid campaigns, landing funnels, and retention efforts into a cohesive acquisition engine.",
+    name: "High-Impact Promotional Poster Design",
+    slug: "poster-design",
+    tagline: "Impactful Visual Communication & Print/Digital Creatives",
+    shortDescription: "High-impact visual creatives and promotional posters engineered for digital announcements, social campaigns, and print.",
+    overview: "Transform complex messages into striking, visually arresting promotional posters. We combine bold typography, calculated color theory, and structured hierarchy to command instant attention.",
     deliverables: [
-      "Multi-Channel Digital Marketing Strategy",
-      "Paid Search & Social Campaign Structuring",
-      "Funnel Architecture & Conversion Optimization",
-      "Audience Segmentation & Retargeting Protocols",
-      "Lead Capture Routing & Performance Analytics"
+      "Digital Marketing & Social Media Promotional Posters",
+      "Event, Product Launch & Campaign Announcements",
+      "High-Resolution Print-Ready Artwork (Vector/CMYK)",
+      "Multi-format Exports (1:1, 4:5, 9:16, 16:9, A3/A4)",
+      "Consistent Corporate Brand Graphic Language"
     ],
     features: [
-      { title: "End-to-End Funnels", desc: "Connecting initial ad impression seamlessly to the final conversion page." },
-      { title: "Transparent Metrics", desc: "Focused on actionable performance indicators: inquiries, bookings, sales." },
-      { title: "Omnichannel Synergy", desc: "Aligning search, social, and web presence to reinforce brand touchpoints." }
+      { title: "Architectural Layouts", desc: "Balanced visual hierarchy that guides the eye to the key takeaway." },
+      { title: "High-DPI Fidelity", desc: "Sharp typography and vector assets ready for digital screens and large format print." },
+      { title: "Tailored Palette", desc: "Curated color schemes that amplify brand identity without clutter." }
     ],
     process: [
-      { step: "01", title: "Market & Funnel Audit", desc: "Analyze customer acquisition journey and find leakages." },
-      { step: "02", title: "Strategy Architecture", desc: "Select highest-yield channels, ad mediums, and budget allocations." },
-      { step: "03", title: "Campaign Launch", desc: "Activate campaigns with synchronized creative and targeted copy." },
-      { step: "04", title: "Iterative Optimization", desc: "Refine targeting, bid strategies, and messaging based on data." }
+      { step: "01", title: "Content Analysis", desc: "Extract primary headline, secondary details, and call to action." },
+      { step: "02", title: "Concept Sketching", desc: "Explore composition, focal points, and typography scale." },
+      { step: "03", title: "Design Execution", desc: "Apply precise typography, lighting, gradients, and graphic styling." },
+      { step: "04", title: "Format Adaptation", desc: "Export in requested ratios for social, print, and web displays." }
     ],
     suitableFor: [
-      "Growing companies needing steady inbound inquiries",
-      "Service providers expanding into new geographical regions",
-      "Brands looking to scale customer acquisition systematically"
+      "Service announcements and special offers",
+      "Corporate conferences, seminars, and events",
+      "Product launches and retail promotions",
+      "Social media feed visual campaigns"
     ],
     benefits: [
-      "Measurable return on advertising investment",
-      "Predictable pipeline of qualified prospective clients",
-      "Strengthened market position against local and global competitors",
-      "Data-backed insights into customer behavior and demand"
+      "Distinct visual presence that separates your business from competitors",
+      "Clear, memorable communication of time-sensitive offers",
+      "Professional materials suitable for both digital sharing and print",
+      "Cohesive brand identity across all customer touchpoints"
     ],
     accentColor: "teal",
-    iconName: "TrendingUp",
-    visualHighlight: "Growth Engine & Acquisition"
+    iconName: "Image",
+    visualHighlight: "Visual Communication & Posters"
   },
   {
     id: "landing-page",
     number: "06",
-    name: "Landing Page",
+    name: "Zero-Distraction Conversion Landing Pages",
     slug: "landing-page",
     tagline: "Single-Goal Conversion Funnels with Zero Distractions",
     shortDescription: "Laser-focused landing pages engineered to drive one specific action: inquiry, sign-up, booking, or purchase.",
@@ -276,52 +278,9 @@ export const SERVICES: ServiceItem[] = [
     visualHighlight: "Conversion-Focused Funnels"
   },
   {
-    id: "ecommerce-website",
-    number: "07",
-    name: "E-commerce Website",
-    slug: "ecommerce",
-    tagline: "Modern Digital Storefronts & Frictionless Purchasing",
-    shortDescription: "Scalable e-commerce platforms engineered for smooth product discovery, secure checkout, and effortless catalog management.",
-    overview: "We build modern e-commerce storefronts that combine luxury aesthetics with lightning-fast catalog search, optimized product pages, and reliable payment processing.",
-    deliverables: [
-      "Complete E-commerce Architecture & Catalog Setup",
-      "Responsive Product Catalog, Search & Filtering System",
-      "High-Converting Product Detail Pages (PDP)",
-      "Shopping Cart & Streamlined Checkout Flow",
-      "Payment Gateway Integration (Razorpay, Stripe, UPI)",
-      "Order Management & Customer Notification Routing"
-    ],
-    features: [
-      { title: "Mobile-First Purchasing", desc: "Designed for effortless single-hand browsing and rapid checkout on phones." },
-      { title: "Secure Transactions", desc: "Encrypted payment gateways supporting cards, net banking, and UPI." },
-      { title: "Inventory Control", desc: "Straightforward admin dashboard for adding products and tracking orders." }
-    ],
-    process: [
-      { step: "01", title: "Catalog & SKU Planning", desc: "Organize product categories, variations, and pricing structures." },
-      { step: "02", title: "Storefront UX Design", desc: "Design seamless browsing, filtering, and product showcase flows." },
-      { step: "03", title: "Integration & Cart Logic", desc: "Connect payment gateways, shipping rules, and automated receipts." },
-      { step: "04", title: "Testing & Launch", desc: "Run end-to-end sandbox test orders and verify live payments." }
-    ],
-    suitableFor: [
-      "Direct-to-Consumer (D2C) brands",
-      "Retail shops expanding into online commerce",
-      "Wholesale and B2B distributors seeking online order processing",
-      "Digital product creators and specialty merchandise"
-    ],
-    benefits: [
-      "Open for business 24/7 with zero geographical boundaries",
-      "High checkout completion rates with reduced cart abandonment",
-      "Full ownership of your customer relationship and store data",
-      "Automated order intake and fulfillment dispatch"
-    ],
-    accentColor: "teal",
-    iconName: "ShoppingCart",
-    visualHighlight: "Digital Storefronts & Checkout"
-  },
-  {
     id: "website-maintenance",
-    number: "08",
-    name: "Website Maintenance",
+    number: "07",
+    name: "Reliable Proactive Website Maintenance",
     slug: "website-maintenance",
     tagline: "Reliable Up-Time, Security Hardening & Content Updates",
     shortDescription: "Proactive technical support, security patches, regular backups, and content updates to keep your website running at peak performance.",
@@ -364,5 +323,5 @@ export const SERVICES: ServiceItem[] = [
 ];
 
 export function getServiceBySlug(slug: string): ServiceItem | undefined {
-  return SERVICES.find(s => s.slug === slug);
+  return SERVICES.find(s => s.slug === slug || s.id === slug);
 }

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { InlaytechsLogo } from "./InlaytechsLogo";
 import { Menu, X, ArrowUpRight, MessageSquare, Phone } from "lucide-react";
 import { getWhatsAppUrl, getPhoneUrl } from "@/data/company";
+import SpecularButton from "./SpecularButton";
 
 export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -37,7 +38,7 @@ export const Navbar: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0A0A0A]/85 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.8)] py-3.5"
+          ? "bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.8)] py-3.5"
           : "bg-transparent py-5"
       }`}
     >
@@ -47,7 +48,7 @@ export const Navbar: React.FC = () => {
           <InlaytechsLogo variant="primary-dark" size="sm" withGlow priority />
         </Link>
 
-        {/* Center: Desktop Navigation Links */}
+        {/* Center: Desktop Navigation Links (Clean Muted Silver -> White with Subtle Magenta Line Reveal) */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
@@ -55,16 +56,21 @@ export const Navbar: React.FC = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-xs uppercase tracking-[0.18em] font-medium transition-all duration-200 relative py-1 ${
+                className={`text-xs uppercase tracking-[0.18em] font-medium transition-colors duration-200 relative py-1 group ${
                   isActive
                     ? "text-white font-semibold"
                     : "text-neutral-400 hover:text-white"
                 }`}
               >
-                {link.name}
-                {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-teal-400 to-amber-500 rounded-full" />
-                )}
+                <span>{link.name}</span>
+                {/* Subtle underline line reveal on hover without flashing or jumping */}
+                <span
+                  className={`absolute bottom-0 left-0 h-[2px] bg-[#FF007A] rounded-full transition-all duration-300 ${
+                    isActive
+                      ? "w-full opacity-100"
+                      : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
+                  }`}
+                />
               </Link>
             );
           })}
@@ -78,19 +84,36 @@ export const Navbar: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat on WhatsApp"
-            className="p-2 rounded-lg text-neutral-400 hover:text-teal-400 border border-white/5 hover:border-teal-500/30 bg-white/[0.02] hover:bg-teal-500/10 transition-all"
+            className="p-2 rounded-xl text-neutral-400 hover:text-[#FF007A] border border-white/5 hover:border-[#FF007A]/30 bg-white/[0.02] hover:bg-[#FF007A]/10 transition-all"
             title="Chat on WhatsApp"
           >
             <MessageSquare className="w-4 h-4" />
           </a>
 
-          {/* Primary CTA */}
-          <Link
-            href="/contact"
-            className="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-black font-semibold text-xs tracking-wider uppercase transition-all duration-300 shadow-[0_0_20px_rgba(20,184,166,0.3)] hover:shadow-[0_0_25px_rgba(20,184,166,0.5)] active:scale-98"
-          >
-            <span>START A PROJECT</span>
-            <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          {/* Primary CTA with SpecularButton */}
+          <Link href="/contact" className="inline-block">
+            <SpecularButton
+              size="sm"
+              radius={10}
+              tint="#FF007A"
+              tintOpacity={0.15}
+              blur={10}
+              textColor="#ffffff"
+              lineColor="#FF007A"
+              baseColor="#441133"
+              intensity={2.8}
+              shineSize={20}
+              shineFade={40}
+              thickness={1.5}
+              speed={0.7}
+              followMouse
+              proximity={200}
+              autoAnimate
+              className="!font-semibold !text-[11px] !tracking-wider !uppercase shadow-[0_0_20px_rgba(255,0,122,0.3)]"
+            >
+              <span>START A PROJECT</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </SpecularButton>
           </Link>
         </div>
 
@@ -116,11 +139,11 @@ export const Navbar: React.FC = () => {
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className={`text-sm tracking-[0.2em] font-medium py-2 flex items-center justify-between border-b border-white/5 ${
-                    isActive ? "text-teal-400 font-bold" : "text-neutral-300"
+                    isActive ? "text-[#FF007A] font-bold" : "text-neutral-300"
                   }`}
                 >
                   <span>{link.name}</span>
-                  {isActive && <span className="w-2 h-2 rounded-full bg-teal-400" />}
+                  {isActive && <span className="w-2 h-2 rounded-full bg-[#FF007A]" />}
                 </Link>
               );
             })}
@@ -130,7 +153,7 @@ export const Navbar: React.FC = () => {
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="w-full py-3 text-center rounded-lg bg-teal-500 hover:bg-teal-400 text-black font-semibold text-xs tracking-wider uppercase transition-all shadow-lg flex items-center justify-center gap-2"
+              className="w-full py-3 text-center rounded-xl bg-gradient-to-r from-[#FF007A] to-[#E0006C] hover:from-[#ff1a8b] hover:to-[#FF007A] text-white font-semibold text-xs tracking-wider uppercase transition-all shadow-lg flex items-center justify-center gap-2"
             >
               <span>START A PROJECT</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -140,9 +163,9 @@ export const Navbar: React.FC = () => {
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-2.5 text-center rounded-lg bg-white/5 hover:bg-white/10 text-neutral-200 border border-white/10 text-xs tracking-wider uppercase font-medium flex items-center justify-center gap-2"
+              className="w-full py-2.5 text-center rounded-xl bg-white/5 hover:bg-white/10 text-neutral-200 border border-white/10 text-xs tracking-wider uppercase font-medium flex items-center justify-center gap-2"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-teal-400" />
+              <MessageSquare className="w-3.5 h-3.5 text-[#FF007A]" />
               <span>Chat on WhatsApp</span>
             </a>
 
@@ -150,7 +173,7 @@ export const Navbar: React.FC = () => {
               href={getPhoneUrl()}
               className="w-full py-2 text-center text-neutral-400 hover:text-white text-xs tracking-wider flex items-center justify-center gap-2"
             >
-              <Phone className="w-3 h-3 text-amber-500" />
+              <Phone className="w-3 h-3 text-[#FF007A]" />
               <span>Call +91 86880 75376</span>
             </a>
           </div>
@@ -159,3 +182,5 @@ export const Navbar: React.FC = () => {
     </header>
   );
 };
+
+export default Navbar;

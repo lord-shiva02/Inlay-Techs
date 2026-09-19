@@ -1,96 +1,152 @@
 "use client";
 
-import React from "react";
-import { ArrowRight, Check } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { Check } from "lucide-react";
+import ElectricBorder from "@/components/common/ElectricBorder";
+import SectionHeader from "@/components/common/SectionHeader";
 
 export const ProcessSection: React.FC = () => {
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setIsInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const steps = [
     {
       number: "01",
       title: "DISCOVER",
       desc: "Understand the business, competitive landscape, and specific technical or marketing requirements.",
-      tag: "Scope & Strategy"
+      tag: "Scope & Strategy",
+      color: "#FF007A"
     },
     {
       number: "02",
       title: "PLAN",
       desc: "Define information architecture, content hierarchy, conversion pathways, and digital direction.",
-      tag: "Wireframes & Funnels"
+      tag: "Wireframes & Funnels",
+      color: "#F43F5E"
     },
     {
       number: "03",
       title: "DESIGN",
       desc: "Create bespoke visual experiences with editorial typography, dark luxury styling, and intuitive UX.",
-      tag: "Visual Engineering"
+      tag: "Visual Engineering",
+      color: "#D946EF"
     },
     {
       number: "04",
       title: "DEVELOP",
       desc: "Build with clean, accessible, modern codebases optimized for high-performance and mobile responsiveness.",
-      tag: "Full-Stack Code"
+      tag: "Full-Stack Code",
+      color: "#EC4899"
     },
     {
       number: "05",
       title: "LAUNCH",
       desc: "Deploy to production, configure custom domains, verify SEO indexing, and provide ongoing support.",
-      tag: "Deployment & Growth"
+      tag: "Deployment & Growth",
+      color: "#FF007A"
     }
   ];
 
   return (
-    <section className="relative py-28 bg-[#090909] border-y border-white/5 overflow-hidden">
+    <section ref={sectionRef} className="relative py-28 bg-[#090909] border-y border-white/[0.06] overflow-hidden">
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#FF007A]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-purple-900/5 rounded-full blur-3xl pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-16 border-b border-white/10">
-          <div>
-            <span className="text-xs font-mono tracking-[0.25em] text-teal-400 uppercase font-semibold block mb-2">
-              07 // METHODOLOGY
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-              HOW WE WORK
-            </h2>
-          </div>
-          <p className="text-neutral-400 max-w-md text-sm sm:text-base font-light leading-relaxed">
-            A disciplined 5-stage deployment cycle designed to eliminate friction and deliver production-grade results on schedule.
-          </p>
-        </div>
+        <SectionHeader
+          kicker="07 // METHODOLOGY"
+          title="HOW WE WORK"
+          description="A disciplined 5-stage deployment cycle designed to eliminate friction and deliver production-grade results on schedule."
+          accentColor="magenta"
+        />
 
-        {/* 5-Step Process Timeline */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 pt-14 relative">
-          {steps.map((step, idx) => (
-            <div
-              key={step.number}
-              className="relative flex flex-col justify-between p-6 rounded-xl bg-white/[0.02] border border-white/5 hover:border-teal-500/30 transition-all duration-300 group"
-            >
-              {/* Top Bar with Step Number */}
-              <div>
-                <div className="flex items-center justify-between pb-6 border-b border-white/5">
-                  <span className="font-display text-4xl font-black text-white/20 group-hover:text-teal-400/80 transition-colors">
-                    {step.number}
-                  </span>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-teal-400/80 bg-teal-500/10 px-2 py-0.5 rounded">
-                    {step.tag}
-                  </span>
-                </div>
+        {/* 5-Step Process Timeline with ElectricBorder and Staggered Reveal */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 pt-14 relative">
+          {steps.map((step, idx) => {
+            const delayMs = idx * 90;
+            return (
+              <div
+                key={step.number}
+                style={{
+                  transitionDelay: `${delayMs}ms`,
+                  transform: isInView ? "translateY(0)" : "translateY(24px)",
+                  opacity: isInView ? 1 : 0
+                }}
+                className="transition-all duration-600 ease-out h-full"
+              >
+                <ElectricBorder
+                  color={step.color}
+                  speed={0.5}
+                  chaos={0.08}
+                  borderRadius={16}
+                  className="h-full"
+                >
+                  <div className="relative flex flex-col justify-between p-6 rounded-2xl bg-[#0D0D12]/95 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group h-full shadow-2xl">
+                    {/* Top Bar with Step Number */}
+                    <div>
+                      <div className="flex items-center justify-between pb-5 border-b border-white/10">
+                        <span className="font-display text-4xl font-black text-white/30 group-hover:text-[#FF007A] transition-colors">
+                          {step.number}
+                        </span>
+                        <span
+                          className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded border border-white/10"
+                          style={{
+                            backgroundColor: `${step.color}15`,
+                            color: step.color
+                          }}
+                        >
+                          {step.tag}
+                        </span>
+                      </div>
 
-                <div className="pt-6">
-                  <h3 className="font-display text-lg font-bold text-white tracking-wide group-hover:text-teal-300 transition-colors">
-                    {step.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-light mt-2.5">
-                    {step.desc}
-                  </p>
-                </div>
+                      <div className="pt-5">
+                        <h3 className="font-display text-lg font-bold text-white tracking-wide group-hover:text-[#FF007A] transition-colors">
+                          {step.title}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-neutral-300/90 leading-relaxed font-light mt-2.5">
+                          {step.desc}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="pt-6 mt-4 border-t border-white/10 flex items-center gap-1.5 text-[11px] font-mono text-neutral-400">
+                      <Check className="w-3.5 h-3.5" style={{ color: step.color }} />
+                      <span>MILESTONE VERIFIED</span>
+                    </div>
+                  </div>
+                </ElectricBorder>
               </div>
-
-              <div className="pt-6 mt-4 border-t border-white/5 flex items-center gap-1.5 text-[11px] font-mono text-neutral-500">
-                <Check className="w-3.5 h-3.5 text-teal-400" />
-                <span>MILESTONE VERIFIED</span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
   );
 };
+
+export default ProcessSection;

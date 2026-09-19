@@ -3,6 +3,7 @@ import "./globals.css";
 import { Navbar } from "@/components/common/Navbar";
 import { Footer } from "@/components/common/Footer";
 import { WhatsAppFloating } from "@/components/common/WhatsAppFloating";
+import { CinematicLogoLoader } from "@/components/common/CinematicLogoLoader";
 import { COMPANY } from "@/data/company";
 
 export const metadata: Metadata = {
@@ -65,6 +66,8 @@ export const metadata: Metadata = {
   }
 };
 
+import { CustomCursor } from "@/components/common/CustomCursor";
+
 export default function RootLayout({
   children,
 }: {
@@ -72,7 +75,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className="bg-[#050505] text-[#E0E0E0] antialiased selection:bg-teal-500 selection:text-black">
+      <body className="bg-[#050505] text-[#E5E7EB] antialiased selection:bg-pink-600 selection:text-white">
+        {/* Desktop-Only Subtle Magnetic Cursor */}
+        <CustomCursor />
+
+        {/* Cinematic Initial / Refresh Loading Animation */}
+        <CinematicLogoLoader />
+
         {/* Global Navigation */}
         <Navbar />
 
