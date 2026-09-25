@@ -1,5 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Times New Roman", Times, Baskerville, Georgia, serif;
+  --font-serif: "Times New Roman", Times, Baskerville, Georgia, serif;
+  --font-mono: "Times New Roman", Times, Baskerville, Georgia, serif;
+  --font-display: "Times New Roman", Times, Baskerville, Georgia, serif;
+  --font-body: "Times New Roman", Times, Baskerville, Georgia, serif;
+}
 
 :root {
   --bg-primary: #050505;
@@ -17,15 +24,19 @@
   --silver-muted: #9CA3AF;
   --silver-dark: #6B7280;
   
-  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: "Times New Roman", Times, Baskerville, Georgia, serif;
+  --font-body: "Times New Roman", Times, Baskerville, Georgia, serif;
+  --font-sans: "Times New Roman", Times, Baskerville, Georgia, serif;
+  --font-mono: "Times New Roman", Times, Baskerville, Georgia, serif;
+  --font-serif: "Times New Roman", Times, Baskerville, Georgia, serif;
 }
 
-html {
+html,
+body {
   scroll-behavior: smooth;
   background-color: var(--bg-primary);
   color: var(--silver-light);
-  font-family: var(--font-body);
+  font-family: "Times New Roman", Times, Baskerville, Georgia, serif !important;
 }
 
 body {
@@ -38,19 +49,33 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+*,
+*::before,
+*::after,
+button,
+input,
+optgroup,
+select,
+textarea,
+pre,
+code,
+kbd,
+samp {
+  font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+}
+
 ::selection {
   background: #FF007A;
   color: #FFFFFF;
 }
 
 /* Typography styles */
-.font-display {
-  font-family: var(--font-display);
-  letter-spacing: -0.025em;
-}
-
-.font-body {
-  font-family: var(--font-body);
+.font-display,
+.font-body,
+.font-mono,
+.font-sans,
+.font-serif {
+  font-family: "Times New Roman", Times, Baskerville, Georgia, serif !important;
 }
 
 /* Metallic & Brand Text Gradients (Polished Chrome & Dark Silver) */

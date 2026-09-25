@@ -2,14 +2,16 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { PROJECTS } from "@/data/projects";
-import { ArrowUpRight, ExternalLink, Terminal } from "lucide-react";
+import Image from "next/image";
+import { PROJECTS, ProjectItem } from "@/data/projects";
+import { ArrowUpRight, ExternalLink, Terminal, Maximize2, X, Sparkles } from "lucide-react";
 import BorderGlow from "@/components/common/BorderGlow";
 import SectionHeader from "@/components/common/SectionHeader";
 import TextReveal from "@/components/common/TextReveal";
 
 export const AchievementsSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
+  const [activeModalImage, setActiveModalImage] = useState<ProjectItem | null>(null);
 
   const categories = [
     "ALL",
@@ -23,10 +25,11 @@ export const AchievementsSection: React.FC = () => {
 
   const filteredProjects = selectedCategory === "ALL"
     ? PROJECTS
-    : PROJECTS.filter(p => p.category === selectedCategory);
+    : PROJECTS.filter(p => p.category.toLowerCase() === selectedCategory.toLowerCase());
 
   const featured = filteredProjects[0];
-  const secondary = filteredProjects.slice(1);
+  const secondary = filteredProjects.slice(1, 3);
+  const remaining = filteredProjects.slice(3);
 
   return (
     <section id="work" className="relative py-28 bg-[#070707] border-t border-white/[0.06] overflow-hidden">
@@ -60,7 +63,7 @@ export const AchievementsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Editorial Asymmetric Layout */}
+        {/* Primary Editorial Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6">
           {/* Featured Hero Project (7 cols) */}
           {featured && (
@@ -77,10 +80,46 @@ export const AchievementsSection: React.FC = () => {
                 colors={["#FF007A", "#38bdf8", "#f43f5e"]}
                 className="h-full"
               >
-                <div className="h-full p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden group">
+                <div className="h-full p-6 sm:p-8 md:p-10 flex flex-col justify-between relative overflow-hidden group">
                   <div className="relative z-10 flex flex-col gap-6">
+                    {/* Visual Media Showcase Frame */}
+                    {featured.image && (
+                      <div 
+                        onClick={() => setActiveModalImage(featured)}
+                        className="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-white/10 group-hover:border-[#FF007A]/50 transition-all duration-500 bg-[#050505] cursor-pointer shadow-2xl"
+                      >
+                        <Image
+                          src={featured.image}
+                          alt={featured.imageAlt || featured.title}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 60vw"
+                          className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                          priority
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
+                        
+                        {/* Floating Badges on Image */}
+                        <div className="absolute top-3 left-3 flex items-center gap-2">
+                          <span className="px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-[10px] font-mono uppercase text-white tracking-wider flex items-center gap-1.5 shadow-lg">
+                            <Sparkles className="w-3 h-3 text-[#FF007A]" />
+                            CLIENT SHOWCASE
+                          </span>
+                        </div>
+
+                        <div className="absolute bottom-3 right-3 opacity-90 group-hover:opacity-100 transition-opacity">
+                          <button
+                            type="button"
+                            className="px-3 py-1.5 rounded-lg bg-black/80 backdrop-blur-md border border-white/20 hover:border-[#FF007A] text-[11px] font-mono text-white flex items-center gap-1.5 transition-colors shadow-lg"
+                          >
+                            <Maximize2 className="w-3 h-3 text-[#FF007A]" />
+                            <span>ENLARGE</span>
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
                     {/* Category & Badge */}
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between pt-2">
                       <span className="text-xs font-mono tracking-widest text-[#FF007A] uppercase font-semibold">
                         {featured.categoryNumber} // {featured.category}
                       </span>
@@ -89,7 +128,7 @@ export const AchievementsSection: React.FC = () => {
                       </span>
                     </div>
 
-                    {/* Title & Description (Targeted Reveals) */}
+                    {/* Title & Description */}
                     <div>
                       <TextReveal
                         mode="fadeUp"
@@ -111,7 +150,7 @@ export const AchievementsSection: React.FC = () => {
                     </div>
 
                     {/* Tech stack */}
-                    <div className="flex flex-wrap gap-2 pt-2">
+                    <div className="flex flex-wrap gap-2 pt-1">
                       {featured.technologies.map((t, idx) => (
                         <span
                           key={idx}
@@ -163,7 +202,7 @@ export const AchievementsSection: React.FC = () => {
 
           {/* Secondary Stack (5 cols) */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            {secondary.slice(0, 2).map((project, pIdx) => {
+            {secondary.map((project, pIdx) => {
               return (
                 <BorderGlow
                   key={project.id}
@@ -178,6 +217,32 @@ export const AchievementsSection: React.FC = () => {
                 >
                   <div className="p-6 sm:p-7 flex flex-col justify-between relative overflow-hidden group h-full">
                     <div className="relative z-10 flex flex-col gap-4">
+                      {/* Secondary Media Banner */}
+                      {project.image && (
+                        <div 
+                          onClick={() => setActiveModalImage(project)}
+                          className="relative w-full h-48 sm:h-52 rounded-xl overflow-hidden border border-white/10 group-hover:border-[#FF007A]/50 transition-all duration-500 bg-[#050505] cursor-pointer shadow-lg"
+                        >
+                          <Image
+                            src={project.image}
+                            alt={project.imageAlt || project.title}
+                            fill
+                            sizes="(max-width: 1024px) 100vw, 40vw"
+                            className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20 pointer-events-none" />
+                          <div className="absolute bottom-2.5 right-2.5">
+                            <button
+                              type="button"
+                              className="px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md border border-white/20 hover:border-[#FF007A] text-[10px] font-mono text-white flex items-center gap-1 transition-colors"
+                            >
+                              <Maximize2 className="w-2.5 h-2.5 text-[#FF007A]" />
+                              <span>VIEW</span>
+                            </button>
+                          </div>
+                        </div>
+                      )}
+
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-mono tracking-wider uppercase font-semibold text-[#FF007A]">
                           {project.categoryNumber} // {project.category}
@@ -242,17 +307,189 @@ export const AchievementsSection: React.FC = () => {
           </div>
         </div>
 
+        {/* Tertiary Projects Grid (Remaining Projects) */}
+        {remaining.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-8">
+            {remaining.map((project) => (
+              <BorderGlow
+                key={project.id}
+                edgeSensitivity={24}
+                glowColor="310 90 60"
+                backgroundColor="#0d0d0d"
+                borderRadius={18}
+                glowRadius={40}
+                glowIntensity={1.0}
+                coneSpread={20}
+                colors={["#FF007A", "#38bdf8"]}
+              >
+                <div className="p-6 flex flex-col justify-between relative overflow-hidden group h-full">
+                  <div className="relative z-10 flex flex-col gap-4">
+                    {/* Media Frame */}
+                    {project.image && (
+                      <div 
+                        onClick={() => setActiveModalImage(project)}
+                        className="relative w-full h-48 rounded-xl overflow-hidden border border-white/10 group-hover:border-[#FF007A]/50 transition-all duration-500 bg-[#050505] cursor-pointer shadow-lg"
+                      >
+                        <Image
+                          src={project.image}
+                          alt={project.imageAlt || project.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20 pointer-events-none" />
+                        <div className="absolute bottom-2.5 right-2.5">
+                          <button
+                            type="button"
+                            className="px-2 py-1 rounded bg-black/80 backdrop-blur-md border border-white/20 text-[10px] font-mono text-white flex items-center gap-1"
+                          >
+                            <Maximize2 className="w-2.5 h-2.5 text-[#FF007A]" />
+                            <span>PREVIEW</span>
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-mono tracking-wider uppercase font-semibold text-[#FF007A]">
+                        {project.categoryNumber} // {project.category}
+                      </span>
+                    </div>
+
+                    <h4 className="font-display text-lg font-bold text-white tracking-tight group-hover:text-[#FF007A] transition-colors">
+                      {project.title}
+                    </h4>
+
+                    <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-light">
+                      {project.shortDescription}
+                    </p>
+
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {project.technologies.slice(0, 3).map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/10 text-[10px] font-mono text-neutral-400"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-6 flex items-center justify-between border-t border-white/5 mt-4 relative z-10">
+                    <Link
+                      href={`/work/${project.slug}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#FF007A] hover:text-[#ff3b98] transition-colors"
+                    >
+                      <span>VIEW CASE STUDY</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs font-medium uppercase tracking-wider text-neutral-400 hover:text-white transition-colors"
+                      >
+                        <span>LIVE SITE</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </BorderGlow>
+            ))}
+          </div>
+        )}
+
         {/* View All Projects Action */}
-        <div className="mt-12 text-center">
+        <div className="mt-14 text-center">
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] text-white border border-white/10 hover:border-[#FF007A]/40 text-xs tracking-wider uppercase font-semibold transition-all"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] text-white border border-white/10 hover:border-[#FF007A]/40 text-xs tracking-wider uppercase font-semibold transition-all shadow-lg"
           >
             <span>VIEW ALL CLIENT ACHIEVEMENTS & CASE STUDIES</span>
             <ArrowUpRight className="w-4 h-4 text-[#FF007A]" />
           </Link>
         </div>
       </div>
+
+      {/* High-Resolution Client Achievement Modal / Lightbox */}
+      {activeModalImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-10 bg-black/90 backdrop-blur-xl animate-fade-in"
+          onClick={() => setActiveModalImage(null)}
+        >
+          <div 
+            className="relative w-full max-w-5xl max-h-[92vh] bg-[#0c0c0e] border border-white/20 rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-black/40">
+              <div className="flex items-center gap-3">
+                <span className="px-2.5 py-1 rounded bg-[#FF007A]/20 border border-[#FF007A]/40 text-xs font-mono text-[#FF007A] uppercase font-semibold">
+                  {activeModalImage.categoryNumber} // {activeModalImage.category}
+                </span>
+                <h3 className="font-display text-base sm:text-lg font-bold text-white truncate max-w-md">
+                  {activeModalImage.title}
+                </h3>
+              </div>
+              <button
+                onClick={() => setActiveModalImage(null)}
+                className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-neutral-300 hover:text-white transition-colors cursor-pointer"
+                aria-label="Close Preview"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Image Display */}
+            {activeModalImage.image && (
+              <div className="relative w-full flex-1 min-h-[50vh] sm:min-h-[60vh] max-h-[72vh] bg-black flex items-center justify-center overflow-auto p-2">
+                <div className="relative w-full h-full min-h-[450px]">
+                  <Image
+                    src={activeModalImage.image}
+                    alt={activeModalImage.imageAlt || activeModalImage.title}
+                    fill
+                    sizes="100vw"
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Modal Footer */}
+            <div className="px-6 py-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 bg-black/60">
+              <p className="text-xs text-neutral-400 font-light max-w-xl">
+                {activeModalImage.shortDescription}
+              </p>
+              <div className="flex items-center gap-3">
+                <Link
+                  href={`/work/${activeModalImage.slug}`}
+                  onClick={() => setActiveModalImage(null)}
+                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#FF007A] to-[#E0006C] text-white font-semibold text-xs tracking-wider uppercase transition-all shadow-md flex items-center gap-1.5"
+                >
+                  <span>CASE STUDY</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+                {activeModalImage.liveUrl && (
+                  <a
+                    href={activeModalImage.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wider uppercase transition-colors flex items-center gap-1.5"
+                  >
+                    <span>LIVE PLATFORM</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

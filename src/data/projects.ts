@@ -16,6 +16,8 @@ export interface ProjectItem {
   deliverables: string[];
   thumbnailGradient: string;
   accent: "teal" | "bronze";
+  image?: string;
+  imageAlt?: string;
 }
 
 export const PROJECTS: ProjectItem[] = [
@@ -23,7 +25,7 @@ export const PROJECTS: ProjectItem[] = [
     id: "corporate-technology-platform",
     slug: "corporate-technology-platform",
     title: "INLAYTECHS Flagship Digital Platform",
-    category: "High-Performance Business Websites",
+    category: "Business & Portfolio Website",
     categoryNumber: "01",
     shortDescription: "A dark-luxury editorial web platform showcasing modern digital engineering, custom branding, and interactive conversion pathways.",
     overview: "Built to demonstrate high-performance web engineering and bespoke brand identity. Features an asymmetric layout, fluid kinetic transitions, and direct client conversion channels.",
@@ -41,13 +43,15 @@ export const PROJECTS: ProjectItem[] = [
     aspectRatio: "wide",
     deliverables: ["Full-Stack Next.js Application", "Brand Vector Suite", "Responsive Layouts", "SEO Architecture"],
     thumbnailGradient: "from-teal-950/40 via-neutral-900 to-black",
-    accent: "teal"
+    accent: "teal",
+    image: "/assets/achievements/business-website-dark.jpg",
+    imageAlt: "INLAYTECHS Professional Business Website Design Dark Studio Setup"
   },
   {
     id: "meta-ads-visual-campaign",
     slug: "meta-ads-visual-campaign",
     title: "High-Retention Meta Ads & Reels Creative Suite",
-    category: "Targeted Meta Ads & High-Retention Reels",
+    category: "Meta Ads & Reels",
     categoryNumber: "03",
     shortDescription: "Thumb-stopping short-form video creatives and promotional reels designed for Instagram and Facebook brand awareness.",
     overview: "A specialized suite of short-form video creatives and reels engineered to arrest scrolling attention and drive audience engagement through crisp hooks and kinetic motion design.",
@@ -63,13 +67,15 @@ export const PROJECTS: ProjectItem[] = [
     aspectRatio: "tall",
     deliverables: ["Curated Video Ad Sets", "Reels Storyboards", "Campaign Configuration Guidance"],
     thumbnailGradient: "from-amber-950/40 via-neutral-900 to-black",
-    accent: "bronze"
+    accent: "bronze",
+    image: "/assets/achievements/meta-ads-results.jpg",
+    imageAlt: "INLAYTECHS Meta Ads That Bring Real Results Campaign Showcase"
   },
   {
     id: "digital-marketing-brand-posters",
     slug: "digital-marketing-brand-posters",
     title: "Brand Announcement & Service Posters",
-    category: "High-Impact Promotional Poster Design",
+    category: "Poster Design",
     categoryNumber: "05",
     shortDescription: "Striking editorial poster series designed for social announcements, campaign launches, and print dissemination.",
     overview: "Visual communication posters designed with high architectural clarity, clean typographic hierarchy, and custom color accents.",
@@ -85,13 +91,15 @@ export const PROJECTS: ProjectItem[] = [
     aspectRatio: "standard",
     deliverables: ["Digital Social Creatives", "Print-Ready Vector PDFs", "Multi-Format Export Assets"],
     thumbnailGradient: "from-teal-950/30 via-neutral-900 to-neutral-950",
-    accent: "teal"
+    accent: "teal",
+    image: "/assets/achievements/web-studio-what-we-do.jpg",
+    imageAlt: "INLAYTECHS Web Studio End-to-End Digital Solutions Poster"
   },
   {
     id: "social-media-content-system",
     slug: "social-media-content-system",
     title: "Social Media Distribution & Profile Identity",
-    category: "Strategic Social Media Distribution",
+    category: "Social Media Marketing",
     categoryNumber: "04",
     shortDescription: "Structured social media brand identity, publishing calendar, and carousel templates designed to elevate brand authority.",
     overview: "A comprehensive social presence system designed to maintain an active, professional image across Instagram and digital channels.",
@@ -107,13 +115,15 @@ export const PROJECTS: ProjectItem[] = [
     aspectRatio: "standard",
     deliverables: ["Feed Grid Design System", "Story Highlights Architecture", "Content Distribution Guidelines"],
     thumbnailGradient: "from-amber-950/30 via-neutral-900 to-neutral-950",
-    accent: "bronze"
+    accent: "bronze",
+    image: "/assets/achievements/digital-marketing-growth.jpg",
+    imageAlt: "INLAYTECHS Digital Marketing Strategy, Content & Growth Campaign"
   },
   {
     id: "single-offer-landing-engine",
     slug: "single-offer-landing-engine",
     title: "High-Performance Conversion Landing Page",
-    category: "Zero-Distraction Conversion Landing Pages",
+    category: "Landing Page",
     categoryNumber: "06",
     shortDescription: "A focused, single-objective landing page engineered to maximize visitor inquiry rates for targeted service campaigns.",
     overview: "Developed to test direct ad traffic response with minimal distraction, fast performance, and an intuitive quote generation form.",
@@ -129,13 +139,15 @@ export const PROJECTS: ProjectItem[] = [
     aspectRatio: "standard",
     deliverables: ["Responsive Single-Page Funnel", "Lead Capture Automation", "Analytics Setup"],
     thumbnailGradient: "from-teal-950/30 via-neutral-900 to-neutral-950",
-    accent: "teal"
+    accent: "teal",
+    image: "/assets/achievements/landing-page-conversion.jpg",
+    imageAlt: "High-Performance Conversion Landing Page Architecture"
   },
   {
     id: "modern-ecommerce-storefront",
     slug: "modern-ecommerce-storefront",
     title: "Modular E-Commerce Storefront Architecture",
-    category: "Scalable E-commerce Storefronts",
+    category: "E-commerce Website",
     categoryNumber: "02",
     shortDescription: "A modern digital storefront featuring intuitive catalog navigation, dynamic product modals, and secure checkout workflows.",
     overview: "Built to demonstrate smooth product discovery, fast filtering, responsive mobile cart UX, and seamless transaction management.",
@@ -151,7 +163,9 @@ export const PROJECTS: ProjectItem[] = [
     aspectRatio: "wide",
     deliverables: ["Full E-commerce Web App", "Cart & Checkout Flow", "Product Catalog Engine"],
     thumbnailGradient: "from-amber-950/40 via-neutral-900 to-black",
-    accent: "bronze"
+    accent: "bronze",
+    image: "/assets/achievements/ecommerce-website-storefront.jpg",
+    imageAlt: "INLAYTECHS E-Commerce Website Development Storefront Showcase"
   }
 ];
 

@@ -75,7 +75,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className="bg-[#050505] text-[#E5E7EB] antialiased selection:bg-pink-600 selection:text-white">
+      <body className="bg-[#050505] text-[#E5E7EB] antialiased selection:bg-pink-600 selection:text-white font-serif">
         {/* Desktop-Only Subtle Magnetic Cursor */}
         <CustomCursor />
 
