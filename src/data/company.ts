@@ -1,14 +1,14 @@
 export const COMPANY = {
   name: "INLAYTECHS",
   tagline: "We Build Digital Experiences That Build Businesses.",
-  domain: "www.inlaytechs.com",
-  url: "https://www.inlaytechs.com",
+  domain: "www.inlaytechs.in",
+  url: "https://www.inlaytechs.in",
   email: "inlaytechs@gmail.com",
   phone: "+91 8688075376",
   phoneDisplay: "+91 86880 75376",
   whatsappNumber: "918688075376",
-  instagramUrl: "https://www.instagram.com/inlay_techs_?stkn=MXNndXFpa2Y5bWxtbg==",
-  instagramHandle: "@inlay_techs_",
+  instagramUrl: "https://www.instagram.com/inlaytechs?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==",
+  instagramHandle: "Inlaytechs.",
   leadership: {
     founder: {
       name: "MR ESWARAN",

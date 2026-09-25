@@ -33,7 +33,10 @@ export const FAQSection: React.FC = () => {
               <TextReveal
                 text="FREQUENTLY ASKED QUESTIONS"
                 as="h2"
-                className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight"
+                mode="3d-heading"
+                stagger={0.045}
+                className="font-display text-3xl sm:text-4xl font-bold tracking-tight leading-tight"
+                itemClassName="text-metallic-chrome"
               />
 
               <p className="text-neutral-400 text-sm font-light mt-4 leading-relaxed">

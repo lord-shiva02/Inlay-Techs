@@ -36,7 +36,7 @@ export const PROJECTS: ProjectItem[] = [
       "Zero-latency WhatsApp and email dispatch links",
       "Strict real-data presentation architecture"
     ],
-    liveUrl: "https://www.inlaytechs.com",
+    liveUrl: "https://www.inlaytechs.in",
     isFeatured: true,
     aspectRatio: "wide",
     deliverables: ["Full-Stack Next.js Application", "Brand Vector Suite", "Responsive Layouts", "SEO Architecture"],

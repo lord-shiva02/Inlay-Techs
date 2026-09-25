@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
 import { ContactSection } from "@/components/home/ContactSection";
-import { FAQSection } from "@/components/home/FAQSection";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -24,7 +23,6 @@ export default function ContactPage() {
       </div>
 
       <ContactSection />
-      <FAQSection />
     </div>
   );
 }

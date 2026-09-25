@@ -77,7 +77,10 @@ export const ContactSection: React.FC = () => {
               <TextReveal
                 text="LET'S BUILD SOMETHING GREAT."
                 as="h2"
-                className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight"
+                mode="3d-heading"
+                stagger={0.045}
+                className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight"
+                itemClassName="text-metallic-chrome"
               />
 
               <p className="text-neutral-400 text-sm sm:text-base font-light mt-4 leading-relaxed">

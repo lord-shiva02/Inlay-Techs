@@ -21,13 +21,13 @@ export const FinalCTA: React.FC = () => {
           </span>
         </div>
 
-        {/* Sequential Line Reveal */}
+        {/* Sequential Line 3D Reveal */}
         <TextReveal
           mode="line"
           lines={["Ready to build", "what's next?"]}
           as="h2"
-          className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.08]"
-          itemClassName="text-white"
+          className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08]"
+          itemClassName="text-metallic-chrome"
         />
 
         <TextReveal

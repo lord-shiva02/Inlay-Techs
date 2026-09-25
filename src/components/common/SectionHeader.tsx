@@ -40,9 +40,11 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
         <TextReveal
           as="h2"
           text={title}
-          stagger={0.04}
+          mode="3d-heading"
+          stagger={0.045}
           delay={120}
-          className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.12]"
+          className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.12]"
+          itemClassName="text-metallic-chrome"
         />
       </div>
 

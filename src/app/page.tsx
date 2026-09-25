@@ -8,7 +8,6 @@ import { ProcessSection } from "@/components/home/ProcessSection";
 import { DigitalMarketingSection } from "@/components/home/DigitalMarketingSection";
 import { LeadershipSection } from "@/components/home/LeadershipSection";
 import { TrustSection } from "@/components/home/TrustSection";
-import { FAQSection } from "@/components/home/FAQSection";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { ContactSection } from "@/components/home/ContactSection";
 
@@ -42,13 +41,10 @@ export default function Home() {
       {/* 10 — Trust / Quality Section */}
       <TrustSection />
 
-      {/* 11 — FAQ */}
-      <FAQSection />
-
-      {/* 12 — Final CTA */}
+      {/* 11 — Final CTA */}
       <FinalCTA />
 
-      {/* 13 — Contact / Lead Generation */}
+      {/* 12 — Contact / Lead Generation */}
       <ContactSection />
     </div>
   );

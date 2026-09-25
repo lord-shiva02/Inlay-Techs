@@ -34,7 +34,9 @@ export const ValueStatement: React.FC = () => {
             <TextReveal
               as="h2"
               text="ENGINEERED FOR BUSINESS CONVERSION & DIGITAL PROMINENCE."
-              className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug"
+              mode="3d-heading"
+              className="font-display text-2xl sm:text-3xl font-bold tracking-tight leading-snug"
+              itemClassName="text-metallic-chrome"
               stagger={0.035}
             />
             <div className="w-12 h-1 bg-[#FF007A] rounded-full mt-2" />

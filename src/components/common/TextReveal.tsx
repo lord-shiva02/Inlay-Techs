@@ -11,7 +11,7 @@ export interface TextRevealProps {
   itemClassName?: string;
   delay?: number;
   stagger?: number;
-  mode?: "word" | "line" | "fadeUp" | "paragraph";
+  mode?: "word" | "line" | "fadeUp" | "paragraph" | "3d-heading";
   threshold?: number;
   once?: boolean;
 }
@@ -27,7 +27,7 @@ export const TextReveal: React.FC<TextRevealProps> = ({
   stagger = 0.045,
   mode = "word",
   threshold = 0.15,
-  once = true
+  once = true,
 }) => {
   const containerRef = useRef<HTMLElement>(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
@@ -58,16 +58,20 @@ export const TextReveal: React.FC<TextRevealProps> = ({
     return () => observer.disconnect();
   }, [threshold, once]);
 
-  // Line-by-line reveal mode (e.g. Hero headings, CTA headings)
+  // Line-by-line 3D reveal mode
   if (mode === "line" && lines && lines.length > 0) {
     return (
-      <Component ref={containerRef as any} className={className}>
+      <Component
+        ref={containerRef as any}
+        className={`perspective-section ${className}`}
+        style={{ transformStyle: "preserve-3d" }}
+      >
         {lines.map((line, i) => (
           <span
             key={i}
             className={`block reveal-line ${isIntersecting ? "is-revealed" : ""} ${itemClassName}`}
             style={{
-              transitionDelay: `${delay + i * 180}ms`
+              transitionDelay: `${delay + i * 180}ms`,
             }}
           >
             {line}
@@ -77,12 +81,12 @@ export const TextReveal: React.FC<TextRevealProps> = ({
     );
   }
 
-  // Paragraph mode (simpler translateY(20px) + opacity fade, 500-700ms)
+  // Paragraph mode (subtle 3D depth reveal: translateY(20px) translateZ(-30px) -> 0)
   if (mode === "paragraph") {
     return (
       <Component
         ref={containerRef as any}
-        className={`reveal-paragraph ${isIntersecting ? "is-revealed" : ""} ${className}`}
+        className={`reveal-paragraph-3d ${isIntersecting ? "is-revealed" : ""} ${className}`}
         style={{ transitionDelay: `${delay}ms` }}
       >
         {children || text}
@@ -90,8 +94,8 @@ export const TextReveal: React.FC<TextRevealProps> = ({
     );
   }
 
-  // Section Heading / FadeUp Mode (translateY(40px) + blur(6px) -> 0, 700-900ms)
-  if (mode === "fadeUp" || (!text && children && !lines)) {
+  // Section Heading / FadeUp Mode (3D perspective rise, 700-900ms)
+  if (mode === "fadeUp" || (!text && children && !lines && mode !== "3d-heading")) {
     return (
       <Component
         ref={containerRef as any}
@@ -103,19 +107,26 @@ export const TextReveal: React.FC<TextRevealProps> = ({
     );
   }
 
-  // Word-by-word Reveal Mode (Editorial & premium)
+  // 3D Heading & Word-by-word Reveal Mode (Cinema 3D Staggered Typography)
+  const isHeading = mode === "3d-heading" || ["h1", "h2", "h3"].includes(Component);
   const rawText = text || (typeof children === "string" ? children : "");
   const words = rawText.split(" ");
 
   return (
-    <Component ref={containerRef as any} className={className}>
+    <Component
+      ref={containerRef as any}
+      className={`perspective-section ${className}`}
+      style={{ transformStyle: "preserve-3d" }}
+    >
       {words.map((word, i) => (
         <span
           key={i}
-          className={`reveal-word ${isIntersecting ? "is-revealed" : ""} ${itemClassName}`}
+          className={`${isHeading ? "reveal-3d-word" : "reveal-word"} ${
+            isIntersecting ? "is-revealed" : ""
+          } ${itemClassName}`}
           style={{
             transitionDelay: `${delay + i * (stagger * 1000)}ms`,
-            marginRight: i === words.length - 1 ? 0 : "0.28em"
+            marginRight: i === words.length - 1 ? 0 : "0.26em",
           }}
         >
           {word}

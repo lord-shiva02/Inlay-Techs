@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowUpRight, MessageSquare } from "lucide-react";
 import { getWhatsAppUrl } from "@/data/company";
 import SpecularButton from "@/components/common/SpecularButton";
+import Hero3DHeading from "@/components/home/Hero3DHeading";
 
 export const Hero: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -87,11 +88,11 @@ export const Hero: React.FC = () => {
       />
 
       {/* =========================================================================
-          03. HERO EDITORIAL CONTENT (LINE-BY-LINE REVEAL)
+          03. HERO EDITORIAL CONTENT (3D CINEMATIC TYPOGRAPHY)
           ========================================================================= */}
       <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
-        {/* SMALL BADGE */}
-        <div className="animate-hero-badge mb-6 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/45 border border-white/15 backdrop-blur-xl shadow-[0_0_25px_rgba(255,0,122,0.18)]">
+        {/* SMALL BADGE (Subtle 3D Depth) */}
+        <div className="animate-hero-badge-3d mb-6 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/45 border border-white/15 backdrop-blur-xl shadow-[0_0_25px_rgba(255,0,122,0.18)]">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF007A] opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF007A]" />
@@ -105,18 +106,11 @@ export const Hero: React.FC = () => {
           </span>
         </div>
 
-        {/* MAIN DISPLAY HEADING (Line-by-Line Staggered Animation) */}
-        <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[1.05] max-w-4xl mx-auto overflow-hidden">
-          <span className="animate-hero-line-1 block">
-            Digital Experiences.
-          </span>
-          <span className="animate-hero-line-2 block text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-[#FF007A]">
-            Built for Growth.
-          </span>
-        </h1>
+        {/* 3D METALLIC HERO HEADING (Perspective Reveal + Word-by-Word + Metallic Light Sweep + Desktop Tilt) */}
+        <Hero3DHeading />
 
         {/* CTA ACTION GROUP WITH SPECULAR BUTTONS (Directly down the text with exact 20px gap) */}
-        <div className="animate-hero-cta mt-[20px] flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+        <div className="animate-hero-cta-3d mt-[20px] flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
           {/* CTA BUTTON 1: Explore Services */}
           <Link href="/services" className="w-full sm:w-auto inline-block">
             <SpecularButton
@@ -171,7 +165,7 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Secondary Quick WhatsApp Consultation (20px top margin) */}
-        <div className="animate-hero-cta mt-[20px] flex items-center justify-center gap-6 text-xs text-neutral-400">
+        <div className="animate-hero-cta-3d mt-[20px] flex items-center justify-center gap-6 text-xs text-neutral-400">
           <a
             href={getWhatsAppUrl("Hello INLAYTECHS! I want to start a project.")}
             target="_blank"
@@ -184,7 +178,7 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* GUIDING PILLARS / METRICS */}
-        <div className="animate-hero-metrics mt-12 sm:mt-16 pt-8 border-t border-white/10 w-full max-w-2xl mx-auto grid grid-cols-3 gap-3 sm:gap-6 text-center">
+        <div className="animate-hero-metrics-3d mt-12 sm:mt-16 pt-8 border-t border-white/10 w-full max-w-2xl mx-auto grid grid-cols-3 gap-3 sm:gap-6 text-center">
           <div className="flex flex-col items-center">
             <span className="font-display text-lg sm:text-2xl font-bold text-white tracking-tight">7 Core</span>
             <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-neutral-400 font-medium mt-0.5">

@@ -49,19 +49,26 @@ export const DigitalMarketingSection: React.FC = () => {
             </span>
 
             {/* Sequential "Reach. Engage. Grow." Headline */}
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <TextReveal
                 as="h2"
-                text="Reach. Engage. Grow."
-                stagger={0.12}
+                mode="fadeUp"
                 delay={100}
-                className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-pink-300 to-[#FF007A] tracking-tight leading-tight"
-              />
+                className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white"
+              >
+                <span>Reach. </span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-[#FF007A] to-purple-400">
+                  Engage.{" "}
+                </span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF007A] to-rose-400">
+                  Grow.
+                </span>
+              </TextReveal>
               <TextReveal
                 as="h3"
                 mode="fadeUp"
-                delay={320}
-                className="font-display text-2xl sm:text-3xl font-semibold text-white tracking-tight mt-2"
+                delay={280}
+                className="font-display text-2xl sm:text-3xl font-semibold text-neutral-200 tracking-tight mt-1"
               >
                 Amplify your brand with precision digital marketing.
               </TextReveal>

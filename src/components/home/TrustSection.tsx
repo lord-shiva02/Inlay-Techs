@@ -41,7 +41,9 @@ export const TrustSection: React.FC = () => {
               <TextReveal
                 as="h2"
                 text="OUR COMMITMENT TO CLIENT TRUST & TECHNICAL PRECISION."
-                className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight"
+                mode="3d-heading"
+                className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight"
+                itemClassName="text-metallic-chrome"
                 stagger={0.035}
               />
               <TextReveal
